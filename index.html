@@ -2,44 +2,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Press Lil Bro</title>
+    <title>Catch Me!</title>
     <style>
         body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
+            position: absolute;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
             cursor: pointer;
+            color: white;
+            border-radius: 10px;
+            transition: background 0.3s;
         }
-        #message {
-            display: none;
-            font-size: 24px;
-            color: red;
-            margin-bottom: 20px;
+        @keyframes colorChange {
+            0% { background: red; }
+            5% { background: orange; }
+            10% { background: yellow; }
+            15% { background: green; }
+            20% { background: blue; }
+            25% { background: indigo; }
+            30% { background: violet; }
+            35% { background: pink; }
+            40% { background: cyan; }
+            45% { background: lime; }
+            50% { background: magenta; }
+            55% { background: gold; }
+            60% { background: coral; }
+            65% { background: turquoise; }
+            70% { background: salmon; }
+            75% { background: chartreuse; }
+            80% { background: deeppink; }
+            85% { background: skyblue; }
+            90% { background: fuchsia; }
+            95% { background: lavender; }
+            100% { background: crimson; }
+        }
+        button {
+            animation: colorChange 3s infinite alternate;
         }
     </style>
-    <script>
-        function showMessageAndRedirect() {
-            const message = document.getElementById('message');
-            const button = document.querySelector('button');
-            message.style.display = 'block';
-            button.style.display = 'none';
-            setTimeout(function() {
-                message.style.display = 'none';
-                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
-            }, 1000);  // Show message for 1 second
-        }
-    </script>
 </head>
 <body>
-    <button onclick="showMessageAndRedirect()">Press Lil Bro</button>
-    <div id="message">lol get rickrolled</div>
+    <button id="catchMe">Catch Me!</button>
+    <script>
+        let button = document.getElementById("catchMe");
+        let dx = 5, dy = 5;
+        let x = Math.random() * (window.innerWidth - button.offsetWidth);
+        let y = Math.random() * (window.innerHeight - button.offsetHeight);function moveButton() {
+        x += dx;
+        y += dy;
+        
+        if (x <= 0 || x >= window.innerWidth - button.offsetWidth) {
+            dx *= -1;
+        }
+        if (y <= 0 || y >= window.innerHeight - button.offsetHeight) {
+            dy *= -1;
+        }
+        
+        button.style.transform = `translate(${x}px, ${y}px)`;
+    }
+    setInterval(moveButton, 5);
+    
+    button.addEventListener("click", function() {
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    });
+</script>
+
 </body>
 </html>
