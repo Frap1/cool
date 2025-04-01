@@ -11,20 +11,35 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            text-align: center;
         }
         button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
         }
+        #message {
+            display: none;
+            font-size: 24px;
+            color: red;
+            margin-bottom: 20px;
+        }
     </style>
     <script>
-        function openVideo() {
-            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+        function showMessageAndRedirect() {
+            const message = document.getElementById('message');
+            const button = document.querySelector('button');
+            message.style.display = 'block';
+            button.style.display = 'none';
+            setTimeout(function() {
+                message.style.display = 'none';
+                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+            }, 1000);  // Show message for 1 second
         }
     </script>
 </head>
 <body>
-    <button onclick="openVideo()">Press Lil Bro</button>
+    <button onclick="showMessageAndRedirect()">Press Lil Bro</button>
+    <div id="message">lol get rickrolled</div>
 </body>
 </html>
