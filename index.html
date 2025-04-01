@@ -1,82 +1,71 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catch Me!</title>
+    <title>Cool Button</title>
     <style>
         body {
             margin: 0;
-            overflow: hidden;
-            background: black;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background: #f0f0f0;
+            flex-direction: column;
         }
-        button {
+        #title {
+            font-size: 30px;
+            font-weight: bold;
             position: absolute;
+            top: 10%;
+            text-align: center;
+        }
+        #clickMeButton {
             padding: 15px 30px;
             font-size: 20px;
             font-weight: bold;
             border: none;
             cursor: pointer;
             color: white;
+            background-color: #007BFF;
             border-radius: 10px;
-            transition: background 0.3s;
+            transition: background-color 0.3s;
         }
-        @keyframes colorChange {
-            0% { background: red; }
-            5% { background: orange; }
-            10% { background: yellow; }
-            15% { background: green; }
-            20% { background: blue; }
-            25% { background: indigo; }
-            30% { background: violet; }
-            35% { background: pink; }
-            40% { background: cyan; }
-            45% { background: lime; }
-            50% { background: magenta; }
-            55% { background: gold; }
-            60% { background: coral; }
-            65% { background: turquoise; }
-            70% { background: salmon; }
-            75% { background: chartreuse; }
-            80% { background: deeppink; }
-            85% { background: skyblue; }
-            90% { background: fuchsia; }
-            95% { background: lavender; }
-            100% { background: crimson; }
-        }
-        button {
-            animation: colorChange 3s infinite alternate;
+        #message {
+            font-size: 25px;
+            font-weight: bold;
+            display: none;
+            color: red;
+            position: absolute;
         }
     </style>
 </head>
 <body>
-    <button id="catchMe">Catch Me!</button>
-    <script>
-        let button = document.getElementById("catchMe");
-        let dx = 5, dy = 5;
-        let x = Math.random() * (window.innerWidth - button.offsetWidth);
-        let y = Math.random() * (window.innerHeight - button.offsetHeight);function moveButton() {
-        x += dx;
-        y += dy;
-        
-        if (x <= 0 || x >= window.innerWidth - button.offsetWidth) {
-            dx *= -1;
-        }
-        if (y <= 0 || y >= window.innerHeight - button.offsetHeight) {
-            dy *= -1;
-        }
-        
-        button.style.transform = `translate(${x}px, ${y}px)`;
-    }
-    setInterval(moveButton, 5);
-    
-    button.addEventListener("click", function() {
-        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    });
-</script>
+    <div id="title">Cool Button</div>
+    <button id="clickMeButton">Click Me!</button>
+    <div id="message">get rickrolled lol</div>
 
+    <script>
+        const clickMeButton = document.getElementById("clickMeButton");
+        const message = document.getElementById("message");
+
+        clickMeButton.addEventListener("click", function() {
+            // Hide the "Click Me!" button
+            clickMeButton.style.display = "none";
+            
+            // Show the "get rickrolled lol" message
+            message.style.display = "block";
+            
+            // Hide the message after 0.7 seconds
+            setTimeout(function() {
+                message.style.display = "none";
+                
+                // Redirect to Rick Astley's video
+                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+            }, 700);
+        });
+    </script>
 </body>
 </html>
